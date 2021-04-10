@@ -1,24 +1,24 @@
 package com.example.navigation
 
 import android.os.Bundle
-import android.widget.FrameLayout
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigate
 import androidx.navigation.compose.rememberNavController
-import com.example.navigation.ui.theme.NavigationTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,20 +44,36 @@ fun App() {
 
 @Composable
 fun Profile(navController: NavController) {
-    Column {
-        Text(text = "Hello Profile!")
-        Button(onClick = { navController.navigate("friendList") }) {
-            Text(text = "Navigate friendList")
+    Box(
+        Modifier.fillMaxWidth().fillMaxHeight(),
+        contentAlignment = Alignment.Center
+    ) {
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Text(
+                text = "Hello Profile!",
+                style = TextStyle(fontSize = 22.sp, color = Color.Black)
+            )
+            Button(onClick = { navController.navigate("friendList") }) {
+                Text(text = "Navigate friendList")
+            }
         }
     }
 }
 
 @Composable
 fun FriendList(navController: NavController) {
-    Column {
-        Text(text = "Hello FriendList!")
-        Button(onClick = { navController.navigate("profile") }) {
-            Text(text = "Navigate profile")
+    Box(
+        Modifier.fillMaxWidth().fillMaxHeight(),
+        contentAlignment = Alignment.Center
+    ) {
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Text(
+                text = "Hello FriendList!",
+                style = TextStyle(fontSize = 22.sp, color = Color.Black)
+            )
+            Button(onClick = { navController.navigate("profile") }) {
+                Text(text = "Navigate profile")
+            }
         }
     }
 }

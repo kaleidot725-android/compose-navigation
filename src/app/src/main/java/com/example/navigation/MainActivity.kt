@@ -3,7 +3,6 @@ package com.example.navigation
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.Text
@@ -24,20 +23,15 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            App()
-        }
-    }
-}
-
-@Composable
-fun App() {
-    val navController = rememberNavController()
-    NavHost(navController, startDestination = "profile") {
-        composable("profile") {
-            Profile(navController)
-        }
-        composable("friendList") {
-            FriendList(navController)
+            val navController = rememberNavController()
+            NavHost(navController, startDestination = "profile") {
+                composable("profile") {
+                    Profile(navController)
+                }
+                composable("friendList") {
+                    FriendList(navController)
+                }
+            }
         }
     }
 }
@@ -45,7 +39,9 @@ fun App() {
 @Composable
 fun Profile(navController: NavController) {
     Box(
-        Modifier.fillMaxWidth().fillMaxHeight(),
+        Modifier
+            .fillMaxWidth()
+            .fillMaxHeight(),
         contentAlignment = Alignment.Center
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -53,7 +49,9 @@ fun Profile(navController: NavController) {
                 text = "Hello Profile!",
                 style = TextStyle(fontSize = 22.sp, color = Color.Black)
             )
-            Button(onClick = { navController.navigate("friendList") }) {
+            Button(onClick = {
+                navController.navigate("friendList")
+            }) {
                 Text(text = "Navigate friendList")
             }
         }
@@ -63,7 +61,9 @@ fun Profile(navController: NavController) {
 @Composable
 fun FriendList(navController: NavController) {
     Box(
-        Modifier.fillMaxWidth().fillMaxHeight(),
+        Modifier
+            .fillMaxWidth()
+            .fillMaxHeight(),
         contentAlignment = Alignment.Center
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -71,7 +71,9 @@ fun FriendList(navController: NavController) {
                 text = "Hello FriendList!",
                 style = TextStyle(fontSize = 22.sp, color = Color.Black)
             )
-            Button(onClick = { navController.navigate("profile") }) {
+            Button(onClick = {
+                navController.navigate("profile")
+            }) {
                 Text(text = "Navigate profile")
             }
         }
